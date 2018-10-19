@@ -2,19 +2,39 @@
 
 1.
   * Create a Human class that takes in a name and age.
-  * Add the function `ageOneYear` that ages the human. 
+  * Add the function `ageOneYear` that ages the human.
   * Add the function `eating`, that logs "mmm, mmm, mmm, I'm love'n it".
   * Create an instance of the Human class.
     * console log your humans age
     * call ageOneYear on your human
     * console log their age again.
     * call eating on your human.
-    
-2. 
-Write a class Vector that represents a vector in two-dimensional space.
-It takes two number arguments: `x` and `y` parameters, which it should be saved to properties of the same name. 
+```js
+class Human {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  ageOneYear() {
+    this.age++;
+  }
+  eating() {
+    console.log("mmm, mmm, mmm, I'm love'n it")
+  }
+}
 
-Give the Vector two methods, `plus` and `minus`, that take another vector as an argument and 
+let dave = new Human("dave","42");
+console.log(dave.age);
+dave.ageOneYear();
+console.log(dave.age);
+dave.eating();
+
+```
+2.
+Write a class Vector that represents a vector in two-dimensional space.
+It takes two number arguments: `x` and `y` parameters, which it should be saved to properties of the same name.
+
+Give the Vector two methods, `plus` and `minus`, that take another vector as an argument and
 returns a new vector that has the sum or difference of the two vectors’ (the one in `this` and the parameter) x and y values.
 
 Add a method `getLength` to the prototype that computes the length of the vector ;
@@ -31,4 +51,21 @@ console.log(v1.minus(v2));
 var v3 = new Vector(3, 4)
 console.log(v3.getLength());
 // => 5
+```
+```js
+class Vector {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+  plus(vec) {
+    return new Vector(this.x+vec.x, this.y+vec.y);
+  }
+  minus(vec) {
+    return new Vector(this.x-vec.x, this.y-vec.y)
+  }
+  getLength(vec) {
+    return Math.sqrt(this.x**2+this.y**2)
+  }
+}
 ```
